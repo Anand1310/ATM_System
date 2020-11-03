@@ -30,9 +30,8 @@
             iii) Deposits <br>
                 It accepts both cash and signed cheque. Amount is added in Total Cash and after checking it will be added in Available Cash. <br>
             iv) LogOut <br>
-                It will show a “Thank You” message <br>
+                It will show a thank you message <br>
         2) After withdrawal and deposits, it will ask whether receipt is required or not. If requires then it prints. <br>
-        3) Accepts or withdraws money only in multiple of Rs 100 <br>
     **keypad** <br>
         1) It works as a keypad of ATM. <br>
         2) It is responsible for all input. <br>

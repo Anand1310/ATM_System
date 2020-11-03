@@ -1,4 +1,5 @@
 public class Account {
+
     private int accountNumber;
     private int pin;
     private double availablebalance;
@@ -11,19 +12,19 @@ public class Account {
         this.totalbalance = 0.0;
     }
 
-    public Account(int account, int pin, double availablebalance, double totalbalance){
+    public Account(int account, int pin, double availablebalance, double totalbalance){     //set account details
         this.accountNumber = account;
         this.pin = pin;
         this.availablebalance = availablebalance;
         this.totalbalance = totalbalance;
     }
 
-    int getAccountNumber(){return accountNumber;}
-    int getPin(){return pin;}
-    double getAvailableBalance(){return availablebalance;}
-    double getTotalBalance(){return totalbalance;}
-    void credit(double amount){this.totalbalance += amount;}
-    void debit(double amount){
+    int getAccountNumber(){return accountNumber;}       //return account number
+    int getPin(){return pin;}                           //return pin
+    double getAvailableBalance(){return availablebalance;}      //return available balance
+    double getTotalBalance(){return totalbalance;}              //return total balance
+    void credit(double amount){this.totalbalance += amount;}        //credit balance
+    void debit(double amount){                                      //debit balance
         this.totalbalance -= amount;
         this.availablebalance -= amount;
     }

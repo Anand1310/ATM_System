@@ -1,7 +1,9 @@
-import java.util.*;
 public class transactions extends atm{
-    Scanner sc = new Scanner(System.in);
+
+    keypad in = new keypad();
+    display dp = new display();
     int account;
+
     void transacts(int acc){
         this.account = acc;
         menu();
@@ -9,8 +11,8 @@ public class transactions extends atm{
 
     private void menu() {
         while(true) {
-            System.out.println("Press 1: Balance Enquiry\nPress 2: Withdrawal\nPress 3: Deposit\nPress 4: EXIT");
-            switch (sc.nextInt()) {
+            dp.transactionMenu();           //Display Transaction Menu
+            switch (in.getInputInt()) {     //run transaction menu
                 case 1:
                     balanceEnquiry(account);
                     break;
@@ -24,60 +26,63 @@ public class transactions extends atm{
                     exit();
                     return;
                 default:
-                    System.out.println("Invalid Input");
+                    dp.invalidInput();
             }
         }
     }
 
-    private void exit() {
-        System.out.println("Thank You!!!...");
+    private void exit() {                                           //log out
+        dp.messages("Thank You!!!...");
     }
 
-    public void balanceEnquiry(int acc) {
-        System.out.println("Available Balance: Rs " + getAvailableBalance(acc));
-        System.out.println("Total Balance: Rs " + getTotalBalance(acc));
+    public void balanceEnquiry(int acc) {                              //Display Balance
+        dp.messages("Available Balance: ", 1);
+        dp.displayCash(getAvailableBalance(acc));
+        dp.messages("Total Balance: ", 1);
+        dp.displayCash(getTotalBalance(acc));
     }
 
-    public void withdrawal(int acc) {
-        System.out.print("Enter amount (in multiple of Rs 100)\nRs ");
-        double amnt = sc.nextDouble();
-        if(amnt%100==0) {
-            if (getAvailableBalance(acc) >= amnt && moneyInATM >= amnt) {
-                accounts[acc].debit(amnt);
+    public void withdrawal(int acc) {                                   //Withdraws Cash
+        dp.enterAmount();
+        double amnt = in.getInputDouble();
+        if(amnt%100==0) {                                               //Accepts cash only in multiple of Rs 100
+            if (getAvailableBalance(acc) >= amnt && moneyInATM >= amnt) {       //check if balance is sufficient in account and ATM
+                accounts[acc].debit(amnt);                               //debit money in both account and ATM
                 moneyInATM -= amnt;
-                System.out.println("Your cash has been dispensed\nPlease take your cash now");
-                receipt(acc);
-            } else if (getAvailableBalance(acc) < amnt) {
-                System.out.println("Insufficient fund in your account\nPlease choose a smaller amount");
-            } else {
-                System.out.println("ATM is out of cash\nPlease choose a smaller amount");
+                dp.takeCash();
+                receipt(acc);                                           //call receipt()
+            }
+            else if (getAvailableBalance(acc) < amnt) {       //If cash demanded is more than cah in his/her account
+                dp.insufficientFund();
+            }
+            else {                                             //If ATM is out of Cash
+                dp.lessCashInATM();
             }
         }
         else{
-            System.out.println("Invalid Input\nPlease enter amount in the multiple of Rs 100");
+            dp.invalidInput();
         }
     }
 
-    public void deposit(int acc) {
-        System.out.print("Enter amount (in multiple of Rs 100)\nRs ");
-        double amnt = sc.nextDouble();
-        if(amnt%100==0) {
-            System.out.println("Enter cash or signed check");
-            accounts[acc].credit(amnt);
-            receipt(acc);
-            System.out.println("Cash Deposited");
+    public void deposit(int acc) {                      //Deposits cash
+        dp.enterAmount();
+        double amnt = in.getInputDouble();
+        if(amnt%100==0) {                               //Check if money to be deposited is multiple of Rs 100 or not
+            dp.cashDeposit();
+            accounts[acc].credit(amnt);                 //Credit money in account
+            receipt(acc);                               //call receipt()
         }
         else{
-            System.out.println("Invalid Input\nPlease enter amount in the multiple of Rs 100");
+            dp.invalidInput();
         }
     }
 
     private void receipt(int acc) {
-        System.out.println("Want a receipt?(yes/no)");
-        String ans = sc.next();
+        dp.messages("Want a receipt?(yes/no)");     //Ask for receipt
+        String ans = in.getInput();
         if(ans.equals("yes")){
-            balanceEnquiry(acc);
-            System.out.println("After seeing it, tear it properly and throw it in nearby dustbin");
+            balanceEnquiry(acc);                    //If yes, then shows both balances
+            dp.messages("After seeing it, tear it properly and throw it in nearby dustbin");
         }
     }
 }

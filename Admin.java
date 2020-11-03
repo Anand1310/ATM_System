@@ -1,33 +1,36 @@
-import java.util.Scanner;
 public class Admin {
-    Scanner sc = new Scanner(System.in);
-    public double admin(double cash) {
-        System.out.println("Hello Admin...");
+
+    int number = 12345678;
+    keypad in = new keypad();
+    display dp = new display();
+
+    public double admin(double cash) {          //run admin menu
+        dp.messages("Hello Admin...");
         while(true){
-            System.out.println("Press 1: Display Total Cash in ATM\nPress 2: Put Cash in ATM\nPress 3: EXIT\nPress 4: System Lockdown");
-            switch(sc.nextInt()) {
+            dp.adminMenu();
+            switch(in.getInputInt()) {
                 case 1:
-                    System.out.println("Rs " + cash);
+                    dp.displayCash(cash);       //display atm cash
                     break;
                 case 2:
-                    cash = depositCash(cash);
+                    cash = depositCash(cash);       //call depositCash()
                     break;
                 case 3:
-                    System.out.println("Bye Admin...");
+                    dp.messages("Bye Admin...");        //log out
                     return cash;
                 case 4:
-                    if(sc.next().equals("SHUT")){
+                    if(in.getInput().equals("SHUT")){       //Initiate break-down only be done if input == "SHUT"
                         return -1;
                     }
                 default:
-                    System.out.println("Invalid Input");
+                    dp.invalidInput();
             }
         }
     }
 
-    private double depositCash(double cash) {
-        System.out.print("Put Cash\nRs ");
-        cash += sc.nextDouble();
+    private double depositCash(double cash) {           //Deposits Cash
+        dp.messages("Put Cash\nRs ");
+        cash += in.getInputDouble();
         return cash;
     }
 }
