@@ -17,6 +17,7 @@ public interface displayMenu {              //Works as screen of ATM
     void insufficientFund();
     void lessCashInATM();
     void cashDeposit();
+    void depositInOtherAccountMenu();
 }
 
 class display implements displayMenu{           //Display all required messages and menu
@@ -67,7 +68,7 @@ class display implements displayMenu{           //Display all required messages 
     }
 
     public void transactionMenu(){
-        System.out.println("Press 1: Balance Enquiry\nPress 2: Withdrawal\nPress 3: Deposit\nPress 4: EXIT");
+        System.out.println("Press 1: Balance Enquiry\nPress 2: Withdrawal\nPress 3: Deposit\nPress 4: Deposit in other account\nPress 5: Change Pin\nPress 6: Generate Mini Statements\nPress 7: EXIT");
     }
 
     public void displayCash(double cash){
@@ -75,7 +76,7 @@ class display implements displayMenu{           //Display all required messages 
     }
 
     public void enterAmount(){
-        System.out.println("Enter amount (in multiple of Rs 100)\nRs ");
+        System.out.print("Enter amount (in multiple of Rs 100)\nRs ");
     }
 
     public void takeCash(){
@@ -95,4 +96,7 @@ class display implements displayMenu{           //Display all required messages 
         System.out.println("Cash Deposited");
     }
 
+    public void depositInOtherAccountMenu() {
+        System.out.println("Press 1: Cash/Cheque\nPress 2: Through Account");
+    }
 }
