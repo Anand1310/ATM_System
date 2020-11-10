@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 public class Mobile extends atm{
     JFrame f;
     JTable t;
@@ -69,7 +68,7 @@ public class Mobile extends atm{
         int n = x.length();
         for(int i=0;i<4;i++)
         {
-            otp += (x.charAt((int) ((Math.random()*10) % n)));
+            otp = otp.concat(String.valueOf(x.charAt((int) ((Math.random()*10) % n))));
         }
         return Integer.parseInt(otp);
     }
