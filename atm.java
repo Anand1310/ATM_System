@@ -16,11 +16,7 @@ public class atm {
 	    bankData();
 	    pins();
 	    int account, pin;
-	    ed.crypt(0);
-	    ed.crypt(1);
-	    ed.crypt(2);
-	    ed.crypt(3);
-	    ed.crypt(4);
+	    for(int i=0;i<5;i++) ed.crypt(i);
 	    while(true){
 	         dp.displayWelcomeNote();		//Displays Welcome Note and ask for account no.
 	         if(moneyInATM<=0.0){			//Check whether Atm has cash or not.
