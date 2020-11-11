@@ -46,9 +46,9 @@ public class transactions extends atm{
     }
 
     private void miniStatement(int account) {
-        String[] transacts = statements[account].getTransacts();
-        double[] money = statements[account].getMoney();
-        dp.messages("Account Number: " + statements[account].getAccount());
+        String[] transacts = accounts[account].getTransacts();
+        double[] money = accounts[account].getMoney();
+        dp.messages("Account Number: " + accounts[account].getAccount());
         dp.messages("Last 3 Transactions: ");
         for(int i=0;i<3;i++){
             System.out.println(transacts[i] + " " + money[i]);
@@ -96,7 +96,7 @@ public class transactions extends atm{
                         checkBank(ifsc, acc);
                         dp.cashDeposit();
                         accounts[checkAccount(acc)].credit(amnt);       //Credit money in other account
-                        statements[checkAccount(acc)].setTransactsMoney("credit", amnt);
+                        accounts[checkAccount(acc)].setTransactsMoney("credit", amnt);
                     } else {
                         dp.invalidInput();
                     }
@@ -109,9 +109,9 @@ public class transactions extends atm{
                             checkBank(ifsc, acc);
                             dp.messages("Transaction Completed");
                             accounts[checkAccount(acc)].credit(amnt, amnt);                 //Credit money in account
-                            statements[checkAccount(acc)].setTransactsMoney("credit", amnt);
+                            accounts[checkAccount(acc)].setTransactsMoney("credit", amnt);
                             accounts[account].debit(amnt);                              //Debit money in account
-                            statements[account].setTransactsMoney("debit", amnt);
+                            accounts[account].setTransactsMoney("debit", amnt);
                         } else {
                             dp.insufficientFund();
                         }
@@ -157,7 +157,7 @@ public class transactions extends atm{
                 moneyInATM -= amnt;
                 dp.takeCash();
                 m.cashWithdrawn(amnt,charge, getAvailableBalance(acc),getTotalBalance(acc));
-                statements[account].setTransactsMoney("debit", amnt);
+                accounts[account].setTransactsMoney("debit", amnt);
                 receipt(acc);                                           //call receipt()
             }
             else if (getAvailableBalance(acc) < amnt) {       //If cash demanded is more than cah in his/her account
@@ -182,7 +182,7 @@ public class transactions extends atm{
             dp.cashDeposit();
             accounts[acc].credit(amnt);                 //Credit money in account
             m.cashDeposited(amnt, charge, getAvailableBalance(acc),getTotalBalance(acc));
-            statements[account].setTransactsMoney("credit", amnt);
+            accounts[account].setTransactsMoney("credit", amnt);
             receipt(acc);                               //call receipt()
         }
         else{

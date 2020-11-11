@@ -74,11 +74,11 @@ public class Mobile extends atm{
     }
 
     public void  miniStatements(int account) {
-        String[] transacts = statements[account].getTransacts();
-        double[] money = statements[account].getMoney();
+        String[] transacts = accounts[account].getTransacts();
+        double[] money = accounts[account].getMoney();
         f = new JFrame();
         f.setTitle("Mini-Statements");
-        JLabel l = new JLabel("<html>Account Number: " + statements[account].getAccount()+ "<br>Last 3 Transactions:</html>");
+        JLabel l = new JLabel("<html>Account Number: " + accounts[account].getAccount()+ "<br>Last 3 Transactions:</html>");
         JPanel p = new JPanel();
         p.add(l);
         String[][] data = {
