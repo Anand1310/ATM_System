@@ -3,12 +3,14 @@
     It has 5 public class and 1 interface. <br>
     Public class: atm, Account, Admin, transactions, keypad <br>
     Interface: displayMenu <br>
+    GUI is added. Gui will act as a mobile and terminal will act as the keypad of the ATM <br>
     **atm:** <br>
         1) It has main method. <br>
         2) It checks account number and pin and if correct then, call transactions <br>
-        3) If account no. is correct and user inputs pin wrong 3 consecutive times, then the card gets blocked. <br>
-        4) It has dummy account of users. <br>
-        5) If ATM has no cash left then it shows "OUT OF CASH" but continue transactions as user can see money or deposit money in their account.<br>
+        3) Encrypt-Decrypt of PIN is added. <br>
+        4) If account no. is correct and user inputs pin wrong 3 consecutive times, then the card gets blocked. <br>
+        5) It has dummy account of users. <br>
+        6) If ATM has no cash left then it shows "OUT OF CASH" but continue transactions as user can see money or deposit money in their account.<br>
     **Account:** <br>
         1) It stores account details of a person. <br>
     **Admin:** <br>
@@ -31,8 +33,16 @@
                 It accepts both cash and signed cheque. Amount is added in Total Cash and after checking it will be added in Available Cash. <br>
             iv) LogOut <br>
                 It will show a “Thank You” message <br>
+            v) Deposits in other account <br>
+                Now, cash can be deposited through cash/cheque or direct from one account to other by giving account number and IFSC code. <br>
+            vi) Change Pin <br>
+                Changing of PIN option is added. <br>
+            vii) MiniStatements <br>
+                Options to generate last 3 transactions details. <br>
         2) After withdrawal and deposits, it will ask whether receipt is required or not. If requires then it prints. <br>
         3) Accepts or withdraws money only in multiple of Rs 100 <br>
+        4) OTP will be generated in mobile for each transaction <br>
+        5) If the bank is different (from SBI), processing fee will be charged otherwise its free.
     **keypad** <br>
         1) It works as a keypad of ATM. <br>
         2) It is responsible for all input. <br>

@@ -75,11 +75,11 @@ public class atm {
 	}
 	public static void miniStatements(){
     	statements = new MiniStatement[5];
-    	statements[0] = new MiniStatement(10045, "credit", 1300.0);
-		statements[1] = new MiniStatement(11156, "debit", 1100.0);
-		statements[2] = new MiniStatement(10267, "credit", 3100.0);
-		statements[3] = new MiniStatement(10378, "debit", 100.0);
-		statements[4] = new MiniStatement(12489, "credit", 3000.0);
+    	statements[0] = new MiniStatement(12345, "credit", 1300.0);
+		statements[1] = new MiniStatement(23456, "debit", 1100.0);
+		statements[2] = new MiniStatement(34567, "credit", 3100.0);
+		statements[3] = new MiniStatement(45678, "debit", 100.0);
+		statements[4] = new MiniStatement(56789, "credit", 3000.0);
 	}
 	public static void pins(){
 		pins[0] = "67890";

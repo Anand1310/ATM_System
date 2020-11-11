@@ -194,7 +194,7 @@ public class transactions extends atm{
         String ifsc = accounts[checkAccount(acc)].getIFSC();
         String bank = ifsc.substring(0,3);
         double bankcharge = 0.0;
-        if(bank.equals("SBI")){
+        if(!bank.equals("SBI")){
             bankcharge = 20.0;
             accounts[checkAccount(acc)].debit(bankcharge);
         }
@@ -203,7 +203,7 @@ public class transactions extends atm{
     private double checkBank(String ifsc, int acc) {
         String bank = ifsc.substring(0,3);
         double bankcharge = 0.0;
-        if(bank.equals("SBI")){
+        if(!bank.equals("SBI")){
             bankcharge = 20.0;
             accounts[checkAccount(acc)].debit(bankcharge);
         }
@@ -217,11 +217,11 @@ public class transactions extends atm{
             String bank = ifsc.substring(0,3);
             if(bank.equals("SBI"))
             {
-                dp.messages("Processing Fees: Rs 20.0");
+                dp.messages("Processing Fees: Rs 0.0");
             }
             else
             {
-                dp.messages("Processing Fees: Rs 0.0");
+                dp.messages("Processing Fees: Rs 20.0");
             }
             balanceEnquiry(acc);                    //If yes, then shows both balances
             dp.messages("After seeing it, tear it properly and throw it in nearby dustbin");

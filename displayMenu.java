@@ -24,7 +24,7 @@ class display implements displayMenu{           //Display all required messages 
 
     public void displayWelcomeNote(){
         System.out.println("*******************************************");
-        System.out.println("Welcome to the Bank Atm\nAll Cards are accepted here\n\nEnter Account Number");
+        System.out.println("Welcome to the SBI Bank Atm\nAll Cards are accepted here\n\nEnter Account Number");
     }
 
     public void outOfCash(){
